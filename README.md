@@ -41,8 +41,10 @@ Startup assembly, vector table, linker script, and system initialization are man
 All code is written to be readable, minimal, and reusable.
 
 Repository Structure
+
 /
 ├── GPIO_Blink/            Basic GPIO output and LED toggle
+|
 └── README.md                   Main documentation
 
 
