@@ -47,17 +47,12 @@ STM32_BareMetal/
 │   ├── system_stm32f4xx.c
 │   └── stubs.c
 │
-├── Day01_GPIO_Blink/
-│   ├── src/main.c
-│   ├── Makefile
-│   └── README.md
-│
-├── Day02_SysTick_Timer/
-│   ├── src/main.c
-│   ├── Makefile
-│   └── README.md
-│
-└── (additional folders for future topics)
+├── GPIO_Blink/
+    ├── src/main.c
+    ├── Makefile
+    └── README.md
+
+
 
 ---
 
