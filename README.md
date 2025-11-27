@@ -44,6 +44,8 @@ Repository Structure
 
 /
 
+├── Common                 Drivers and other necessary common files
+
 ├── GPIO_Blink/            Basic GPIO output and LED toggle
 
 └── README.md                   Main documentation
