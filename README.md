@@ -32,25 +32,25 @@ The goal of this repository is to build a strong foundation in low-level embedde
 Each topic or experiment is placed in its own project folder.  
 Shared code and device headers (CMSIS, startup files, linker scripts) are stored in a common directory.
 
-Example structure:
-
-STM32_BareMetal/
+STM32/
 │
 ├── common/
-│   ├── Drivers/
-│   │   ├── CMSIS/Core/Include
-│   │   └── CMSIS/Device/ST/STM32F4xx/Include
-│   ├── startup/
-│   │   └── startup_stm32f401xx.s
-│   ├── linker/
-│   │   └── stm32f401.ld
-│   ├── system_stm32f4xx.c
-│   └── stubs.c
+│ ├── Drivers/
+│ │ ├── CMSIS/Core/Include
+│ │ └── CMSIS/Device/ST/STM32F4xx/Include
+│ ├── startup/
+│ │ └── startup_stm32f401xx.s
+│ ├── linker/
+│ │ └── stm32f401.ld
+│ ├── system_stm32f4xx.c
+│ └── stubs.c
 │
 ├── GPIO_Blink/
-    ├── src/main.c
-    ├── Makefile
-    └── README.md
+│ ├── src/main.c
+│ ├── Makefile
+│ └── README.md
+│
+└── (Further files will be added)
 
 
 
