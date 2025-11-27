@@ -1,141 +1,120 @@
-STM32 Bare-Metal Firmware Development
-Learning Journey on the STM32 NUCLEO-F401RE (No HAL, No CubeMX)
+# STM32 Bare-Metal Firmware Development  
+Learning on the STM32 NUCLEO-F401RE (No HAL, No CubeMX)
 
-This repository documents my complete learning journey into embedded firmware development using the STM32 NUCLEO-F401RE microcontroller board.
-The focus of this project is to understand the STM32 platform at a low level using pure C, CMSIS headers, and direct register programming.
+This repository documents my learning journey into embedded firmware development using the STM32 NUCLEO-F401RE development board.  
+The focus of this project is to understand the STM32F401RE microcontroller at a low level using pure C, CMSIS headers, and direct register programming.  
+No HAL, no CubeMX, and no vendor-generated code are used in any part of the firmware.
 
-The purpose of this repo is educational: to develop a deep, practical understanding of ARM Cortex-M microcontrollers without relying on HAL, CubeMX, or vendor abstraction layers.
+---
 
-Goals of This Repository
+## Purpose of This Repository
 
-Build firmware projects fully from scratch.
+The goal of this repository is to build a strong foundation in low-level embedded systems by:
 
-Understand how STM32 peripherals work at the register level.
+- Writing firmware from scratch using only CMSIS and reference manuals.
+- Understanding how STM32 peripherals work at the register level.
+- Learning the ARM Cortex-M4 architecture, SysTick, NVIC, and startup process.
+- Developing basic drivers for common peripherals without vendor libraries.
+- Managing a clean project architecture, including Makefiles, linker scripts, and startup code.
+- Creating a structured learning path with self-contained tasks.
 
-Learn the ARM Cortex-M architecture, SysTick, NVIC, and startup process.
+---
 
-Develop drivers for common peripherals without vendor libraries.
+## Hardware Used
 
-Practice clean project structure, Makefiles, linker scripts, and startup code.
+- Development Board: STM32 NUCLEO-F401RE  
+- Microcontroller: STM32F401RE (ARM Cortex-M4, 84 MHz, ARMv7E-M)
 
-Document each step as a series of self-contained learning tasks.
+---
 
-Hardware Used
+## Repository Structure
 
-Development Board: STM32 NUCLEO-F401RE
+Each topic or experiment is placed in its own project folder.  
+Shared code and device headers (CMSIS, startup files, linker scripts) are stored in a common directory.
 
-Microcontroller: STM32F401RE (ARM Cortex-M4, 84 MHz, ARMv7E-M architecture)
+Example structure:
 
-Project Approach
+STM32_BareMetal/
+│
+├── common/
+│   ├── Drivers/
+│   │   ├── CMSIS/Core/Include
+│   │   └── CMSIS/Device/ST/STM32F4xx/Include
+│   ├── startup/
+│   │   └── startup_stm32f401xx.s
+│   ├── linker/
+│   │   └── stm32f401.ld
+│   ├── system_stm32f4xx.c
+│   └── stubs.c
+│
+├── Day01_GPIO_Blink/
+│   ├── src/main.c
+│   ├── Makefile
+│   └── README.md
+│
+├── Day02_SysTick_Timer/
+│   ├── src/main.c
+│   ├── Makefile
+│   └── README.md
+│
+└── (additional folders for future topics)
 
-This repository follows a structured learning workflow:
+---
 
-Each firmware task is implemented in its own project folder or branch.
+## Topics Covered in This Repository
 
-Every task builds from scratch without copying HAL-generated code.
+### ARM Cortex-M Core Concepts
+- Vector tables and exception handling
+- Reset and startup sequence
+- SysTick timer configuration
+- NVIC interrupt control
+- Memory layout and system initialization (SystemInit)
 
-Only CMSIS headers are used to access hardware registers.
+### STM32 Peripheral Concepts
+- RCC clock gating and system clock structure
+- GPIO configuration using CMSIS
+- Hardware timers (TIMx)
+- UART transmit/receive
+- SPI master mode
+- I2C communication basics
+- ADC single-shot conversion
+- DMA transfers
+- PWM signal generation
+- External interrupts (EXTI)
 
-Startup assembly, vector table, linker script, and system initialization are manually included.
+### Firmware Engineering Concepts
+- Makefile-based build systems
+- Linker scripts and memory mapping
+- Startup assembly and vector tables
+- SWD programming and debugging
+- Flashing via st-flash
+- Project modularity and version control practices
 
-All code is written to be readable, minimal, and reusable.
+---
 
-Repository Structure
+## Building and Flashing
 
-/
-
-├── Common                 Drivers and other necessary common files
-
-├── GPIO_Blink/            Basic GPIO output and LED toggle
-
-└── README.md                   Main documentation
-
-
-(This structure is flexible; we can update it as your learning progresses.)
-
-What This Repository Covers
-Core Cortex-M Concepts
-
-Vector tables
-
-Stack initialization
-
-Reset and exception handlers
-
-SysTick timer
-
-NVIC configuration
-
-CMSIS core registers
-
-STM32 Peripherals
-
-RCC and clock configuration
-
-GPIO input/output
-
-Timers (TIM2, TIM3, etc.)
-
-UART
-
-SPI
-
-I2C
-
-ADC
-
-DMA
-
-EXTI interrupts
-
-PWM generation
-
-Power modes (later in the series)
-
-Firmware Engineering Essentials
-
-Linker scripts (.ld)
-
-Startup assembly (.s)
-
-Makefiles
-
-Flasher integration (st-flash, openocd)
-
-Directory organization
-
-Version control with Git
-
-Documentation discipline
-
-How to Build/Flash
-
-Build using GCC and Make:
+Each project folder contains its own Makefile.  
+Typical build and flash process:
 
 make
-
-
-Flash via ST-LINK:
-
 make flash
 
+These use the GNU ARM toolchain and ST-LINK programmer.
 
-(Each task folder includes its own Makefile and build instructions.)
+---
 
-Long-Term Objective
+## Long-Term Objective
 
-By the end of this journey, the goal is to be able to:
+The long-term purpose of this repository is to gain confidence working directly with ARM Cortex-M microcontrollers at the register level.  
+By avoiding HAL and CubeMX, the focus is placed on understanding how the hardware operates internally and how firmware interacts with it at its most fundamental level.
 
-Write complete firmware drivers without relying on HAL
+This repository will continue expanding with new drivers, experiments, and low-level explorations as learning progresses.
 
-Understand every register that configures the hardware
+---
 
-Design and debug low-level embedded software confidently
+## Notes
 
-Build real-world embedded projects
-
-Showcase strong embedded fundamentals to recruiters
-
-Contact
-
-If you are interested in embedded systems or want to collaborate, feel free to reach out or connect on LinkedIn.
+- This project is intended for educational purposes.
+- Only CMSIS device headers are used for register definitions.
+- No HAL or vendor middleware is included.
