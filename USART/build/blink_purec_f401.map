@@ -1,0 +1,182 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/main.o
+ .data          0x00000000        0x0 build/main.o
+ .bss           0x00000000        0x0 build/main.o
+ .text          0x00000000        0x0 build/system_stm32f4xx.o
+ .data          0x00000000        0x0 build/system_stm32f4xx.o
+ .bss           0x00000000        0x0 build/system_stm32f4xx.o
+ .text.SystemCoreClockUpdate
+                0x00000000       0x10 build/system_stm32f4xx.o
+ .data.SystemCoreClock
+                0x00000000        0x4 build/system_stm32f4xx.o
+ .text          0x00000000        0x0 build/stubs.o
+ .data          0x00000000        0x0 build/stubs.o
+ .bss           0x00000000        0x0 build/stubs.o
+ .text          0x00000000       0x14 build/startup_stm32f401xx.o
+ .data          0x00000000        0x0 build/startup_stm32f401xx.o
+ .bss           0x00000000        0x0 build/startup_stm32f401xx.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00080000         xr
+SRAM             0x20000000         0x00018000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/main.o
+LOAD build/system_stm32f4xx.o
+LOAD build/stubs.o
+LOAD build/startup_stm32f401xx.o
+LOAD /usr/lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+fp/softfp/libgcc.a
+                0x20018000                        _estack = (ORIGIN (SRAM) + LENGTH (SRAM))
+
+.isr_vector     0x08000000      0x194
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x194 build/startup_stm32f401xx.o
+                0x08000000                g_pfnVectors
+
+.text           0x08000194      0x132
+ *(.text*)
+ .text.startup.main
+                0x08000194       0xa0 build/main.o
+                0x08000194                main
+ .text.SystemInit
+                0x08000234       0x1c build/system_stm32f4xx.o
+                0x08000234                SystemInit
+ .text.__libc_init_array
+                0x08000250        0x4 build/stubs.o
+                0x08000250                __libc_init_array
+ .text._init    0x08000254        0x4 build/stubs.o
+                0x08000254                _init
+ .text.Reset_Handler
+                0x08000258       0x50 build/startup_stm32f401xx.o
+                0x08000258                Reset_Handler
+ .text.Default_Handler
+                0x080002a8        0x2 build/startup_stm32f401xx.o
+                0x080002a8                RTC_Alarm_IRQHandler
+                0x080002a8                EXTI2_IRQHandler
+                0x080002a8                DebugMon_Handler
+                0x080002a8                SPI4_IRQHandler
+                0x080002a8                TIM1_CC_IRQHandler
+                0x080002a8                DMA2_Stream5_IRQHandler
+                0x080002a8                HardFault_Handler
+                0x080002a8                DMA1_Stream5_IRQHandler
+                0x080002a8                SysTick_Handler
+                0x080002a8                PVD_IRQHandler
+                0x080002a8                SDIO_IRQHandler
+                0x080002a8                TAMP_STAMP_IRQHandler
+                0x080002a8                PendSV_Handler
+                0x080002a8                NMI_Handler
+                0x080002a8                EXTI3_IRQHandler
+                0x080002a8                TIM1_UP_TIM10_IRQHandler
+                0x080002a8                I2C3_ER_IRQHandler
+                0x080002a8                EXTI0_IRQHandler
+                0x080002a8                I2C2_EV_IRQHandler
+                0x080002a8                DMA1_Stream2_IRQHandler
+                0x080002a8                FPU_IRQHandler
+                0x080002a8                UsageFault_Handler
+                0x080002a8                DMA2_Stream2_IRQHandler
+                0x080002a8                SPI1_IRQHandler
+                0x080002a8                TIM1_BRK_TIM9_IRQHandler
+                0x080002a8                DMA2_Stream3_IRQHandler
+                0x080002a8                USART6_IRQHandler
+                0x080002a8                DMA2_Stream0_IRQHandler
+                0x080002a8                TIM4_IRQHandler
+                0x080002a8                I2C1_EV_IRQHandler
+                0x080002a8                DMA1_Stream6_IRQHandler
+                0x080002a8                DMA1_Stream1_IRQHandler
+                0x080002a8                TIM3_IRQHandler
+                0x080002a8                RCC_IRQHandler
+                0x080002a8                Default_Handler
+                0x080002a8                EXTI15_10_IRQHandler
+                0x080002a8                ADC_IRQHandler
+                0x080002a8                DMA1_Stream7_IRQHandler
+                0x080002a8                TIM5_IRQHandler
+                0x080002a8                DMA2_Stream7_IRQHandler
+                0x080002a8                I2C3_EV_IRQHandler
+                0x080002a8                EXTI9_5_IRQHandler
+                0x080002a8                RTC_WKUP_IRQHandler
+                0x080002a8                SPI2_IRQHandler
+                0x080002a8                MemManage_Handler
+                0x080002a8                DMA1_Stream0_IRQHandler
+                0x080002a8                SVC_Handler
+                0x080002a8                EXTI4_IRQHandler
+                0x080002a8                WWDG_IRQHandler
+                0x080002a8                TIM2_IRQHandler
+                0x080002a8                OTG_FS_WKUP_IRQHandler
+                0x080002a8                TIM1_TRG_COM_TIM11_IRQHandler
+                0x080002a8                EXTI1_IRQHandler
+                0x080002a8                USART2_IRQHandler
+                0x080002a8                I2C2_ER_IRQHandler
+                0x080002a8                DMA2_Stream1_IRQHandler
+                0x080002a8                FLASH_IRQHandler
+                0x080002a8                DMA2_Stream4_IRQHandler
+                0x080002a8                BusFault_Handler
+                0x080002a8                USART1_IRQHandler
+                0x080002a8                OTG_FS_IRQHandler
+                0x080002a8                SPI3_IRQHandler
+                0x080002a8                DMA1_Stream4_IRQHandler
+                0x080002a8                I2C1_ER_IRQHandler
+                0x080002a8                DMA2_Stream6_IRQHandler
+                0x080002a8                DMA1_Stream3_IRQHandler
+ *(.rodata*)
+ *fill*         0x080002aa        0x2 
+ .rodata.main.str1.4
+                0x080002ac       0x1a build/main.o
+                0x080002c6                        _etext = .
+                0x080002c6                        _sidata = LOADADDR (.data)
+
+.glue_7         0x080002c8        0x0
+ .glue_7        0x080002c8        0x0 linker stubs
+
+.glue_7t        0x080002c8        0x0
+ .glue_7t       0x080002c8        0x0 linker stubs
+
+.vfp11_veneer   0x080002c8        0x0
+ .vfp11_veneer  0x080002c8        0x0 linker stubs
+
+.v4_bx          0x080002c8        0x0
+ .v4_bx         0x080002c8        0x0 linker stubs
+
+.iplt           0x080002c8        0x0
+ .iplt          0x080002c8        0x0 build/main.o
+
+.rel.dyn        0x080002c8        0x0
+ .rel.iplt      0x080002c8        0x0 build/main.o
+
+.data           0x20000000        0x0 load address 0x080002c6
+                0x20000000                        _sdata = .
+ *(.data*)
+                0x20000000                        _edata = .
+
+.igot.plt       0x20000000        0x0
+ .igot.plt      0x20000000        0x0 build/main.o
+
+.bss            0x20000000        0x0
+                0x20000000                        _sbss = .
+ *(.bss*)
+ *(COMMON)
+                0x20000000                        _ebss = .
+OUTPUT(build/blink_purec_f401.elf elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 build/main.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026       0x27 build/system_stm32f4xx.o
+ .comment       0x00000026       0x27 build/stubs.o
+
+.ARM.attributes
+                0x00000000       0x30
+ .ARM.attributes
+                0x00000000       0x32 build/main.o
+ .ARM.attributes
+                0x00000032       0x32 build/system_stm32f4xx.o
+ .ARM.attributes
+                0x00000064       0x32 build/stubs.o
+ .ARM.attributes
+                0x00000096       0x21 build/startup_stm32f401xx.o
